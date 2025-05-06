@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GenMU Challenge</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            background-color: #ffffff;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        .header img {
+            max-width: 200px;
+        }
+        .header nav {
+            display: flex;
+            gap: 20px;
+        }
+        .header nav a {
+            color: #333;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 400;
+        }
+        .header nav a:hover {
+            text-decoration: underline;
+        }
+        .main-image {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+        }
+        .image-credits {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .content h2 {
+            font-size: 1.8em;
+            font-weight: 700;
+            margin: 20px 0;
+        }
+        .content p {
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+        .content p.quote {
+            font-style: italic;
+            color: #666;
+            margin-top: 20px;
+        }
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .header img {
+                max-width: 150px;
+            }
+            .header nav {
+                margin-top: 10px;
+                gap: 15px;
+            }
+            .content h2 {
+                font-size: 1.5em;
+            }
+            .content p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="genmu-logo.png" alt="GenMU Challenge Logo">
+            <nav>
+                <a href="#organizers">Organizers</a>
+                <a href="#faq">FAQ</a>
+            </nav>
+        </div>
+        <img src="genmu-image.png" alt="GenMU Challenge Image" class="main-image">
+        <div class="image-credits">Image credits: [Your image source]</div>
+        <div class="content">
+            <h2>Why?</h2>
+            <p>Generative models are transforming AI, with applications in content creation, simulations, and more. While these advancements offer exciting opportunities, they also introduce new challenges for privacy and ethics. As researchers, we bear the responsibility to understand and mitigate the risks associated with these models. A key concern is the handling of sensitive data within large-scale generative models, which often retain details of their training sets.</p>
+            <p>Concretely, the field faces a significant challenge meeting recent privacy regulations, such as the EU’s General Data Protection Regulation (Mantelero, 2013) or Canada’s Personal Information Protection and Electronic Documents Act, which stipulate that individuals have the “right to be forgotten”.</p>
+            <p class="quote">The introduction of this legal notion has spurred the development of formal, mathematical notions of “deleting” or “obliterating” one’s data, all studied under the auspices of “machine unlearning”.</p>
+        </div>
+    </div>
+</body>
+</html>
