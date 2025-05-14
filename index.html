@@ -24,7 +24,12 @@
             align-items: center;
             padding: 20px 0;
         }
-        .header img {
+        .logos {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .logos img {
             max-width: 200px;
         }
         .header nav {
@@ -128,8 +133,13 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
-            .header img {
-                max-width: 150px;
+            .logos {
+                flex-direction: row;
+                width: 100%;
+                justify-content: space-between;
+            }
+            .logos img {
+                max-width: 120px;
             }
             .header nav {
                 margin-top: 10px;
@@ -154,7 +164,10 @@
     <div class="container">
         <div class="challenge-heading">Genμ Challenge @ICCV'25</div>
         <div class="header">
-            <img src="genmu-logo.png" alt="Genμ Challenge 2025 (U&ME Workshop) Logo">
+            <div class="logos">
+                <img src="genmu-logo.png" alt="Genμ Challenge 2025 (U&ME Workshop) Logo">
+                <img src="second-logo.png" alt="Second Logo">
+            </div>
             <nav>
                 <a href="index.html">Home</a>
                 <a href="organizers.html">Organizers</a>
@@ -167,17 +180,17 @@
         
         <div class="content">
             <h2>About the Challenge</h2>
-            <p>Generative models are at the forefront of AI innovation, with applications in text generation, image synthesis, and more. While this progress offers exciting opportunities, it also introduces new challenges, as we researchers bear the responsibility to understand and mitigate the potential risks associated with it. Notably, a key ingredient of recent advances is the role of massive datasets combined with ever-larger models. This aspect has implications for privacy, as generative models tend to memorize details of their training set. Concretely, the field faces a significant challenge meeting recent privacy regulations, such as the EU’s General Data Protection Regulation (Mantelero, 2013) or Canada’s Personal Information Protection and Electronic Documents Act, which stipulate that individuals have the “right to be forgotten”.</p>
-            <p class="quote">The introduction of this legal notion has spurred the development of formal, mathematical notions of “deleting” or “obliterating” one’s data, all studied under the auspices of “machine unlearning”.</p>
+            <p>Generative models are at the forefront of AI innovation, with applications in text generation, image synthesis, and more. While this progress offers exciting opportunities, it also introduces new challenges, as we researchers bear the responsibility to understand and mitigate the potential risks associated with it. Notably, a key ingredient of recent advances is the role of massive datasets combined with ever-larger models. This aspect has implications for privacy, as generative models tend to memorize details of their training set. Concretely, the field faces a significant challenge meeting recent privacy regulations, such as the EU's General Data Protection Regulation (Mantelero, 2013) or Canada's Personal Information Protection and Electronic Documents Act, which stipulate that individuals have the "right to be forgotten".</p>
+            <p class="quote">The introduction of this legal notion has spurred the development of formal, mathematical notions of "deleting" or "obliterating" one's data, all studied under the auspices of "machine unlearning".</p>
 
             <p>Informally, unlearning refers to removing the influence of a subset of the training set from the weights of a trained model. The development of novel formal models, their theoretical limitations, and efficient and scalable algorithms is a rich and growing subfield; see for example recent surveys by Zhang et al. (2023), Nguyen et al. (2022), Jiang et al. (2022), as well as the Google AI Blogpost on this challenge.</p>
 
             <h2>Task and Data</h2>
             <p>The challenge centers on the scenario in which a text generator is built from a large corpus of text data and, after training, a certain number of texts must be forgotten to protect the privacy or rights of the individuals concerned.</p>
             <img src="genmu-diagram.png" alt="Anatomy of Generative Machine Unlearning Diagram" class="diagram-image">
-            <p><strong>Anatomy of unlearning.</strong> An unlearning algorithm takes as input a pre-trained generative model and one or more samples from the train set to unlearn (the “forget set”). From the model, forget set, and retain set, the unlearning algorithm produces an updated model. An ideal unlearning algorithm produces a model that is indistinguishable from the model trained without the forget set.</p>
-            <p>The starting kit provides an example of unlearning algorithms for participants to build their unlearning models upon. We’ve also provided a document describing how submissions are evaluated. See the Kaggle site for more information on the submission and the current leaderboard.</p>
-            <p>For the Feedback and Final phases of the challenge, participants’ submitted code is evaluated on real text datasets hosted on Kaggle. Those datasets are not made available to participants during the challenge.</p>
+            <p><strong>Anatomy of unlearning.</strong> An unlearning algorithm takes as input a pre-trained generative model and one or more samples from the train set to unlearn (the "forget set"). From the model, forget set, and retain set, the unlearning algorithm produces an updated model. An ideal unlearning algorithm produces a model that is indistinguishable from the model trained without the forget set.</p>
+            <p>The starting kit provides an example of unlearning algorithms for participants to build their unlearning models upon. We've also provided a document describing how submissions are evaluated. See the Kaggle site for more information on the submission and the current leaderboard.</p>
+            <p>For the Feedback and Final phases of the challenge, participants' submitted code is evaluated on real text datasets hosted on Kaggle. Those datasets are not made available to participants during the challenge.</p>
             <p><strong>Update May 2025.</strong> TBD</p>
 
             <h2>Useful Links</h2>
@@ -190,7 +203,7 @@
             </ul>
 
             <h2>Timeline</h2>
-            <p><strong>Check phase:</strong> Begins TBD. Initial announcement and availability of the “starting kit”, containing a notebook with an example simple unlearning algorithm and a simple metric for evaluation, so that participants can start practicing.</p>
+            <p><strong>Check phase:</strong> Begins TBD. Initial announcement and availability of the "starting kit", containing a notebook with an example simple unlearning algorithm and a simple metric for evaluation, so that participants can start practicing.</p>
             <p><strong>Feedback phase:</strong> Date TBD. Submission site opens and participants can start making submissions on Kaggle.</p>
             <p><strong>Final phase:</strong> Date TBD. During this phase, the organizers can run additional analyses on the submitted unlearning algorithms, including different metrics and datasets.</p>
             <p>Winners will be announced in the beginning of June.</p>
