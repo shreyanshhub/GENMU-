@@ -185,14 +185,22 @@
 
             <p>Informally, unlearning refers to removing the influence of a subset of the training set from the weights of a trained model. The development of novel formal models, their theoretical limitations, and efficient and scalable algorithms is a rich and growing subfield; see for example recent SOTA works like Concept Ablation proposed by <a href="https://arxiv.org/abs/2303.13516" target="_blank" rel="noopener noreferrer">Kumari et.al (2023)</a>, ESD proposed by <a href="https://arxiv.org/pdf/2303.07345" target="_blank" rel="noopener noreferrer">Gandikota et.al (2023)</a> and FADE proposed by <a href="https://arxiv.org/abs/2503.19783" target="_blank" rel="noopener noreferrer">Thakral et al. (2025)</a>  </p>
 
-            <h2>Task and Data</h2>
-            <p>The challenge focuses on <strong>concept and adjacent concept unlearning in the image domain</strong>. Participants will work with pre-trained generative image models that need to "forget" specific visual concepts while retaining their general capabilities.</p>
-            <!-- <img src="genmu-diagram.png" alt="Anatomy of Generative Machine Unlearning Diagram" class="diagram-image"> -->
-            <p><strong>Anatomy of concept unlearning.</strong> An unlearning algorithm takes as input a pre-trained image generative model and one or more visual concepts to unlearn (the "forget set"). From the model, forget concepts, and retain concepts, the unlearning algorithm produces an updated model. An ideal unlearning algorithm produces a model that cannot generate the forgotten concepts but maintains performance on adjacent and unrelated concepts.</p>
-            <p><strong>Adjacent concept challenge:</strong> Unlike simple unlearning tasks, this challenge emphasizes the difficulty of eliminating specific visual concepts without degrading performance on semantically related concepts. For example, removing the ability to generate "golden retrievers" without affecting the generation of other dog breeds.</p>
-            <p>The starting kit provides example unlearning algorithms for participants to build upon, along with evaluation metrics that measure both the effectiveness of concept removal and preservation of adjacent concept quality. See the Kaggle site for more information on submission requirements and the current leaderboard.</p>
-            <p><strong>Evaluation Methodology:</strong>  Submissions will be evaluated based on their effectiveness in erasing target concepts while preserving both general and related knowledge with minimal effect on the model weights. The Forgetting-Retention Score (FRS) will serve as the primary evaluation metric, balancing forgetting accuracy---the effectiveness of concept removal---with retention accuracy, which measures how well related and unrelated concepts are maintained. Additionally, robustness against engineered and adversarial prompts will be tested to ensure erased concepts do not reappear. Perceptual and distributional stability will also be analyzed to verify consistent model behavior post-unlearning. To facilitate comparison, baseline methods will be provided.</p>
-            <p>For the Feedback and Final phases, participants' submitted code is evaluated on real image datasets hosted on Kaggle. These evaluation datasets are not made available to participants during the challenge.</p>
+            <h2>Timeline</h2>
+    
+    <p><strong>Registration Phase:</strong> This phase marks the official opening for participants to register for the Genμ Challenge through the dedicated <a href="https://forms.gle/YsjEJj4UMXWCvQci6" target="_blank" rel="noopener noreferrer">Google Form</a>. A "starting kit" will be released, providing a notebook with an example unlearning algorithm and a basic evaluation metric, enabling participants to begin their practice.</p>
+
+    <p><strong>Submission Phase:</strong> Participants will submit their code, specifically focusing on unlearned models, directly to the <a href="https://kaggle.com/competitions/gen-challenge-u-me-workshop-iccv-25" target="_blank" rel="noopener noreferrer">Kaggle contest platform</a>. Submissions will undergo automated grading, with dynamic updates to the leaderboard. Comprehensive details regarding the precise format and nature of the unlearned models required will be communicated shortly.</p>
+
+    <p><strong>Evaluation Phase:</strong> This phase comprises two distinct stages to ensure thorough assessment:
+        <ul>
+            <li><strong>Automatic Evaluation:</strong> Models are automatically evaluated via scripts executed within Kaggle notebooks, providing real-time leaderboard adjustments.</li>
+            <li><strong>Manual Evaluation:</strong> Our expert team will conduct rigorous, in-depth evaluations of submitted models on local servers, applying a diverse set of metrics to validate and analyze the results comprehensively.</li>
+        </ul>
+    </p>
+
+    <p><strong>Call for Paper Phase:</strong> The top 3 performing teams in the challenge will receive an exclusive invitation to co-author a research paper with our challenge and workshop organizing team, highlighting their innovative approaches and findings.</p>
+    
+    <p>Winners will be officially announced on 10 August 2025.</p>
             <!-- <p><strong>Update May 2025.</strong> TBD</p> -->
 
             <h2>Useful Links</h2>
