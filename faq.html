@@ -43,7 +43,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Genμ Challenge 2025 (U&ME Workshop)</title>
+    <title>Genμ Challenge 2025 (U&ME Workshop) - FAQ</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -168,6 +168,45 @@
             border-bottom: 1px solid #e0e0e0;
             padding-bottom: 10px;
         }
+
+        /* NEW FAQ STYLES */
+        .faq-section {
+            margin-top: 30px;
+        }
+
+        .faq-item {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #eee; /* A subtle separator */
+        }
+
+        .faq-item:last-child {
+            border-bottom: none; /* No border for the last item */
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .faq-item h3 {
+            font-size: 1.25em; /* Slightly larger for questions */
+            font-weight: 500; /* Medium weight for questions */
+            color: #1a73e8; /* A distinctive color for questions */
+            margin-top: 0;
+            margin-bottom: 10px;
+            cursor: pointer; /* Suggests it might be clickable if you add JS for accordions later */
+        }
+
+        .faq-item h3:hover {
+            text-decoration: underline; /* A subtle hover effect */
+        }
+
+        .faq-item p {
+            font-size: 1.05em; /* Slightly smaller for answers than general content */
+            color: #555;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+        /* END NEW FAQ STYLES */
+
         @media (max-width: 768px) {
             .header {
                 flex-direction: column;
@@ -197,6 +236,13 @@
             .challenge-heading {
                 font-size: 1.8em;
             }
+            /* Responsive adjustments for FAQ */
+            .faq-item h3 {
+                font-size: 1.15em;
+            }
+            .faq-item p {
+                font-size: 1em;
+            }
         }
     </style>
 </head>
@@ -217,8 +263,48 @@
             </nav>
         </div>
         <div class="content">
-            <h2>FAQ</h2>
-            <p>To be revealed soon</p>
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-section">
+                <div class="faq-item">
+                    <h3>Q: What is the Genμ Challenge?</h3>
+                    <p>A: The Genμ Challenge is a cutting-edge competition focused on unlearning in deep generative models, held in conjunction with the U&ME Workshop at ICCV 2025. It aims to foster innovation and collaboration in these critical areas.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Q: Who can participate in the challenge?</h3>
+                    <p>A: The challenge is open to researchers, academics, students, and industry professionals from around the globe. Participants can join individually or form teams of up to 5 members.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Q: What are the key dates for the challenge?</h3>
+                    <p>A: Key dates and announcements  will be officially announced soon on this website only.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Q: Where can I find the dataset for the challenge?</h3>
+                    <p>A: The challenge dataset will be made available on Kaggle, with access details provided to registered participants. We will announce the dataset release date separately.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Q: How do I register for the Genμ Challenge?</h3>
+                    <p>A: Registration details, including platform links and deadlines, will be published under the "Call for Entries" section. Keep an eye on that page for comprehensive instructions.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Q: Are there any prizes for the winners?</h3>
+                    <p>A: Yes, significant prizes and recognition will be awarded to top-performing teams. Details regarding prize categories and amounts will be announced closer to the challenge start date.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Q: Will there be a paper submission track for participants?</h3>
+                    <p>A: Yes, participants will have the opportunity to submit technical reports or papers detailing their approaches and results, which may be published in the U&ME Workshop proceedings.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Q: How can I contact the organizers if I have more questions?</h3>
+                    <p>A: You can reach the organizing committee by emailing us at <a href="mailto:genmu.challenge.2025@gmail.com">genmu.challenge.2025@gmail.com</a>. We aim to respond to all inquiries within 2 business days.</p>
+                </div>
+            </div>
         </div>
         <div class="footer">
             <p><strong>Genμ Challenge 2025 (U&ME Workshop)</strong></p>
