@@ -204,7 +204,8 @@
         <li><strong>Multi-Concept Unlearning:</strong> Participants will submit unlearned models where multiple target concepts are erased concurrently.</li>
         <li><strong>Continual Unlearning:</strong> Participants will submit unlearned models that have progressively forgotten target concepts based on a sequence of requests.</li>
     </ul>
-    <p><strong>Evaluation Methodology:</strong></p>
+            
+   <p><strong>Evaluation Methodology:</strong></p>
 <ul>
   <li><strong>Goal</strong>: Remove the <em>target concepts</em> while preserving the model’s general and related knowledge, with minimal weight change.</li>
 
@@ -212,21 +213,36 @@
     <ul>
       <li><strong>Per-concept averages</strong><br>
         \[
-          \begin{aligned}
-            \overline{A_{er}} &= \frac{1}{N_{img}N_{c_{tar}}}\sum_{i=1}^{N_{img}}\sum_{c=1}^{N_{c_{tar}}} A_{er}^{(i,c)},\\[2pt]
-            \overline{A_{ret}} &= \frac{1}{N_{img}N_{c_{ret}}}\sum_{i=1}^{N_{img}}\sum_{c=1}^{N_{c_{ret}}} A_{ret}^{(i,c)},\\[2pt]
-            \overline{A_{adj}} &= \frac{1}{N_{img}N_{c_{adj}}}\sum_{i=1}^{N_{img}}\sum_{c=1}^{N_{c_{adj}}} A_{adj}^{(i,c)},\\[2pt]
-            \overline{A_{ind}} &= \frac{1}{N_{img}N_{c_{tar}}}\sum_{i=1}^{N_{img}}\sum_{c=1}^{N_{c_{tar}}} A_{ind}^{(i,c)},\\[2pt]
-            \overline{A_{adv}} &= \frac{1}{N_{img}N_{c_{tar}}}\sum_{i=1}^{N_{img}}\sum_{c=1}^{N_{c_{tar}}} A_{adv}^{(i,c)}.
-          \end{aligned}
+          \overline{A_{fgt}} = \frac{1}{N_{img}N_{c_{tar}}}\sum_{i=1}^{N_{img}}\sum_{c=1}^{N_{c_{tar}}} A_{fgt}^{(i,c)}
         \]
+        — average <em>forgetting accuracy</em>: how well the model suppresses each target concept.<br><br>
+
+        \[
+          \overline{A_{ret}} = \frac{1}{N_{img}N_{c_{ret}}}\sum_{i=1}^{N_{img}}\sum_{c=1}^{N_{c_{ret}}} A_{ret}^{(i,c)}
+        \]
+        — average <em>retention accuracy</em>: how well unrelated knowledge is preserved.<br><br>
+
+        \[
+          \overline{A_{adj}} = \frac{1}{N_{img}N_{c_{adj}}}\sum_{i=1}^{N_{img}}\sum_{c=1}^{N_{c_{adj}}} A_{adj}^{(i,c)}
+        \]
+        — average <em>adjacent‐concept accuracy</em>: how well concepts correlated with the targets stay intact.<br><br>
+
+        \[
+          \overline{A_{ind}} = \frac{1}{N_{img}N_{c_{tar}}}\sum_{i=1}^{N_{img}}\sum_{c=1}^{N_{c_{tar}}} A_{ind}^{(i,c)}
+        \]
+        — average <em>engineered-prompt robustness</em>: resistance to prompts intentionally designed to resurface the targets.<br><br>
+
+        \[
+          \overline{A_{adv}} = \frac{1}{N_{img}N_{c_{tar}}}\sum_{i=1}^{N_{img}}\sum_{c=1}^{N_{c_{tar}}} A_{adv}^{(i,c)}
+        \]
+        — average <em>adversarial robustness</em>: resistance to adversarial prompts that attempt to reveal the targets.
       </li>
 
-      <li><strong>Final FRR&nbsp;Score</strong> (harmonic mean)
+      <li><strong>Final FRR&nbsp;Score</strong> (harmonic mean)<br>
         \[
           \text{FRR} \;=\;
           \operatorname{HM}\bigl(
-            \overline{A_{er}},\,
+            \overline{A_{fgt}},\,
             \overline{A_{ret}},\,
             \overline{A_{adj}},\,
             \overline{A_{ind}},\,
@@ -235,7 +251,11 @@
         \]
       </li>
 
-      <li><strong>Interpretation</strong>: Higher \(A_{er}\) ⇒ better forgetting; higher \(A_{ret}\) and \(A_{adj}\) ⇒ better retention; higher \(A_{ind}\) and \(A_{adv}\) ⇒ better robustness to engineered and adversarial prompts.</li>
+      <li><strong>Interpretation</strong>:  
+        Higher \(\overline{A_{fgt}}\) ⇒ better forgetting;  
+        higher \(\overline{A_{ret}}\) and \(\overline{A_{adj}}\) ⇒ better retention;  
+        higher \(\overline{A_{ind}}\) and \(\overline{A_{adv}}\) ⇒ stronger robustness.
+      </li>
     </ul>
   </li>
 
@@ -270,19 +290,57 @@
 
             </ul>
 
-            <h2>Timeline</h2>
-    
-    <p><strong>Registration Phase:</strong> This phase marks the official opening for participants to register for the Genμ Challenge through the dedicated <a href="https://forms.gle/YsjEJj4UMXWCvQci6" target="_blank" rel="noopener noreferrer">Google Form</a>. </p>
+    <!-- =====================  Genμ Challenge — Timeline  ===================== -->
+<section id="timeline">
+  <h2>Timeline</h2>
 
-    <p><strong>Submission Phase:</strong> Participants will submit their code, specifically focusing on unlearned models, directly to the <a href="https://kaggle.com/competitions/gen-challenge-u-me-workshop-iccv-25" target="_blank" rel="noopener noreferrer">Kaggle contest platform</a>. Submissions will undergo automated grading, with dynamic updates to the leaderboard. Comprehensive details regarding the precise format and nature of the unlearned models required will be communicated shortly.</p>
+  <ul>
+    <!-- 1. Registration -->
+    <li>
+      <strong>Registration&nbsp;(21&nbsp;May – 31&nbsp;July&nbsp;2025)</strong><br>
+      Complete the
+      <a href="https://forms.gle/YsjEJj4UMXWCvQci6" target="_blank" rel="noopener noreferrer">
+        official registration form
+      </a>.
+    </li>
 
-    <p><strong>Evaluation Phase:</strong> This phase comprises two distinct stages to ensure thorough assessment:
-        <ul>
-            <li><strong>Self-Reporting Evaluation:</strong> Submissions will be evaluated using the CSV generated from this <a href="https://colab.research.google.com/drive/1_f6AIjZ5IYeJuVSl27upzSePpTd6-y3U?usp=sharing" target="_blank" rel="noopener noreferrer">Colab file</a>, and the leaderboard on Kaggle will be updated accordingly. During this phase, only the target concepts will be unlearned and tested using direct, engineered/indirect, and adversarial prompts.</li>
-            <li><strong>Model Evaluation:</strong> Our expert team will conduct rigorous evaluations of submitted models on local servers, applying a diverse set of metrics for comprehensive analysis. Evaluation on retention and adjacent concepts (considered a held-out set and released after the competition) will also be performed. In the event of a tie between two teams, the amount of weight modification required for unlearning will be compared, with less modification indicating better performance.</li>            
-        </ul>
-    </p>
+    <!-- 2. Submission + on-line self-reporting -->
+    <li>
+      <strong>Submission&nbsp;&amp;&nbsp;Self-Reporting&nbsp;Evaluation&nbsp;(1 June – 31 July 2025)</strong><br>
+      <ul>
+        <li>
+          Upload the CSV produced by the
+          <a href="<!-- Colab URL here -->" target="_blank" rel="noopener noreferrer">
+            evaluation script on Google Colab
+          </a>.
+        </li>
+        <li>
+          Entries are auto-graded on the
+          <a href="https://kaggle.com/competitions/gen-challenge-u-me-workshop-iccv-25" target="_blank" rel="noopener noreferrer">
+            Kaggle leaderboard
+          </a>, which updates in real time.
+        </li>
+        <li>
+          Only the specified target concepts are unlearned and tested via direct, indirect, and adversarial prompts during this online stage.
+        </li>
+      </ul>
+    </li>
 
+    <!-- 3. Final model upload -->
+    <li>
+      <strong>Final&nbsp;Model&nbsp;Upload&nbsp;(1 July – 31 July 2025)</strong><br>
+      Submit 20 single-concept unlearned models <em>or</em> one multi-concept / continual-unlearning model.  
+      Detailed upload instructions will be circulated to registered teams.
+    </li>
+
+    <!-- 4. Offline evaluation -->
+    <li>
+      <strong>Independent&nbsp;Model&nbsp;Review&nbsp;(1 August – 12 August 2025)</strong><br>
+      The evaluation committee conducts a full offline assessment, including retention tests, adjacent-concept generalisation, and a tie-breaker based on the magnitude of weight changes required for unlearning (smaller changes rank higher).
+    </li>
+  </ul>
+</section>
+<!-- ====================================================================== -->
     <p><strong>Call for Paper Phase:</strong> The top 3 performing teams in the challenge will receive an exclusive invitation to co-author a research paper(provided that their methodology beats the State-of-the-Art Baselines which will be shared with them soon) with our challenge and workshop organizing team, highlighting their innovative approaches and findings.</p>
     
     <p>Winners will be officially announced tentatively on 10 August 2025.</p>
