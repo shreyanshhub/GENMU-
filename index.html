@@ -204,18 +204,61 @@
         <li><strong>Multi-Concept Unlearning:</strong> Participants will submit unlearned models where multiple target concepts are erased concurrently.</li>
         <li><strong>Continual Unlearning:</strong> Participants will submit unlearned models that have progressively forgotten target concepts based on a sequence of requests.</li>
     </ul>
-    <p>A comprehensive document outlining the detailed submission protocol for each type of unlearned model will be provided to all participants.</p>
+    <p><strong>Evaluation Methodology:</strong></p>
+<ul>
+  <li><strong>Goal</strong>: Remove the <em>target concepts</em> while preserving the model’s general and related knowledge, with minimal weight change.</li>
 
-    <p><strong>Evaluation Methodology:</strong> Submissions will be evaluated based on their effectiveness in erasing target concepts while preserving both general and related knowledge with minimal impact on model weights. The Forgetting-Retention-Robustness Score (FRR Score) will serve as the primary evaluation metric, balancing forgetting accuracy (\(A_{er}\), the effectiveness of concept removal) with retention accuracy (the maintenance of related and unrelated knowledge, i.e., \(A_{adj}\) and \(A_{ret}\)). Furthermore, robustness against engineered (\(A_{ind}\)) and adversarial (\(A_{adv}\)) prompts will be assessed to ensure that erased concepts do not reappear. Perceptual and distributional stability will also be analyzed to verify consistent model behavior post-unlearning. The final FRR Score can be mathematically expressed as:
-        Final metric: Harmonic Mean of \[\left(
-        \frac{1}{N_{img} N_{c_{tar}}} \sum_{i=1}^{N_{img}} \sum_{c=1}^{N_{c_{tar}}} A_{er}^{(i,c)},
-        \frac{1}{N_{img} N_{c_{ret}}} \sum_{i=1}^{N_{img}} \sum_{c=1}^{N_{c_{ret}}} A_{ret}^{(i,c)},
-        \frac{1}{N_{img} N_{c_{adj}}} \sum_{i=1}^{N_{img}} \sum_{c=1}^{N_{c_{adj}}} A_{adj}^{(i,c)}, \\
-        \frac{1}{N_{img} N_{c_{tar}}} \sum_{i=1}^{N_{img}} \sum_{c=1}^{N_{c_{tar}}} A_{ind}^{(i,c)}
-        \frac{1}{N_{img} N_{c_{tar}}} \sum_{i=1}^{N_{img}} \sum_{c=1}^{N_{c_{tar}}} A_{adv}^{(i,c)}
-      \right) \], where \(N_{img}\) are the number of images generated for each concept, \(N_{c_{tar}}\) is the count of target concepts to unlearn in the dataset, \(N_{c_{ret}}\) is the count of concepts to test for retention performance, \(N_{c_{adj}}\) is the count of concepts correlated concepts.
-    Tie breaker:   \(    \left( \frac{1}{N_c} \sum_{i=1}^c \left||\, \theta_{orig}^i - \theta_{un}^i \right|| \right) / \text{Total parameters} \), where \(\theta_{orig}\) is the original model and \(\theta_{un}\) is the unlearnt model.
-        <br>For comparison, the performance of baseline methods will be provided.</p>
+  <li><strong>Primary Metric — Forgetting-Retention-Robustness (FRR&nbsp;Score)</strong>
+    <ul>
+      <li><strong>Per-concept averages</strong><br>
+        \[
+          \begin{aligned}
+            \overline{A_{er}} &= \frac{1}{N_{img}N_{c_{tar}}}\sum_{i=1}^{N_{img}}\sum_{c=1}^{N_{c_{tar}}} A_{er}^{(i,c)},\\[2pt]
+            \overline{A_{ret}} &= \frac{1}{N_{img}N_{c_{ret}}}\sum_{i=1}^{N_{img}}\sum_{c=1}^{N_{c_{ret}}} A_{ret}^{(i,c)},\\[2pt]
+            \overline{A_{adj}} &= \frac{1}{N_{img}N_{c_{adj}}}\sum_{i=1}^{N_{img}}\sum_{c=1}^{N_{c_{adj}}} A_{adj}^{(i,c)},\\[2pt]
+            \overline{A_{ind}} &= \frac{1}{N_{img}N_{c_{tar}}}\sum_{i=1}^{N_{img}}\sum_{c=1}^{N_{c_{tar}}} A_{ind}^{(i,c)},\\[2pt]
+            \overline{A_{adv}} &= \frac{1}{N_{img}N_{c_{tar}}}\sum_{i=1}^{N_{img}}\sum_{c=1}^{N_{c_{tar}}} A_{adv}^{(i,c)}.
+          \end{aligned}
+        \]
+      </li>
+
+      <li><strong>Final FRR&nbsp;Score</strong> (harmonic mean)
+        \[
+          \text{FRR} \;=\;
+          \operatorname{HM}\bigl(
+            \overline{A_{er}},\,
+            \overline{A_{ret}},\,
+            \overline{A_{adj}},\,
+            \overline{A_{ind}},\,
+            \overline{A_{adv}}
+          \bigr).
+        \]
+      </li>
+
+      <li><strong>Interpretation</strong>: Higher \(A_{er}\) ⇒ better forgetting; higher \(A_{ret}\) and \(A_{adj}\) ⇒ better retention; higher \(A_{ind}\) and \(A_{adv}\) ⇒ better robustness to engineered and adversarial prompts.</li>
+    </ul>
+  </li>
+
+  <li><strong>Tie-breaker — Weight-Change Ratio</strong><br>
+    \[
+      \frac{1}{N_{c}}\,
+      \sum_{i=1}^{N_{c}}
+        \lVert\theta_{\text{orig}}^{\,i}-\theta_{\text{un}}^{\,i}\rVert
+      \;\Big/\;
+      \text{Total parameters},
+    \]
+    where \(\theta_{\text{orig}}\) and \(\theta_{\text{un}}\) are the original and un-learnt model weights.
+  </li>
+
+  <li><strong>Notation</strong>:  
+    \(N_{img}\) — images per concept&nbsp;&nbsp;|&nbsp;&nbsp;
+    \(N_{c_{tar}}\) — target concepts&nbsp;&nbsp;|&nbsp;&nbsp;
+    \(N_{c_{ret}}\) — retention-test concepts&nbsp;&nbsp;|&nbsp;&nbsp;
+    \(N_{c_{adj}}\) — adjacent/correlated concepts.
+  </li>
+
+  <li><strong>Baselines</strong>: Scores of existing un-learning methods will be reported for comparison.</li>
+</ul>
             <!-- <p><strong>Update May 2025.</strong> TBD</p> -->
 
             <h2>Useful Links</h2>
