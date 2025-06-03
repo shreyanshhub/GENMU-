@@ -204,15 +204,23 @@
     </ul>
     <p>A comprehensive document outlining the detailed submission protocol for each type of unlearned model will be provided to all participants.</p>
 
-    <p><strong>Evaluation Methodology:</strong> Submissions will be evaluated based on their effectiveness in erasing target concepts while preserving both general and related knowledge with minimal impact on model weights. The Forgetting-Retention Score (FRS) will serve as the primary evaluation metric, balancing forgetting accuracy (the effectiveness of concept removal) with retention accuracy (the maintenance of related and unrelated knowledge). Furthermore, robustness against engineered and adversarial prompts will be assessed to ensure that erased concepts do not reappear. Perceptual and distributional stability will also be analyzed to verify consistent model behavior post-unlearning. For comparative purposes, baseline methods will be provided.</p>
+    <p><strong>Evaluation Methodology:</strong> Submissions will be evaluated based on their effectiveness in erasing target concepts while preserving both general and related knowledge with minimal impact on model weights. The Erasing-Retention-Robustness Score (ERR Score) will serve as the primary evaluation metric, balancing forgetting accuracy ($A_{er}$, the effectiveness of concept removal) with retention accuracy (the maintenance of related and unrelated knowledge, i.e., $A_{adj}$ and $A_{ret}$). Furthermore, robustness against engineered ($A_{ind}$) and adversarial ($A_{adv}$) prompts will be assessed to ensure that erased concepts do not reappear. Perceptual and distributional stability will also be analyzed to verify consistent model behavior post-unlearning. The final ERR Score can be mathemarcally expressed as:
+        Final metric: HM of \[\left(
+        \frac{1}{N_{img} N_{c}} \sum_{i=1}^{N_{img}} \sum_{c=1}^{N_{c}} A_{er}^{(i,c)},
+        \frac{1}{N_{img} N_{c}} \sum_{i=1}^{N_{img}} \sum_{c=1}^{N_{c}} A_{ret}^{(i,c)},
+        \frac{1}{N_{img} N_{c}} \sum_{i=1}^{N_{img}} \sum_{c=1}^{N_{c}} A_{adj}^{(i,c)},
+        \frac{1}{N_{img} N_{c}} \sum_{i=1}^{N_{img}} \sum_{c=1}^{N_{c}} A_{adv}^{(i,c)}
+      \right) \]
+    Tie breaker:   \(    \left( \sum_{i} \left|\, \theta_{orig} - \theta_{un} \right| \right) / \text{Total parameters} \)
+        For comparative purposes, baseline methods will be provided.</p>
             <!-- <p><strong>Update May 2025.</strong> TBD</p> -->
 
             <h2>Useful Links</h2>
             <ul>
                 <li><a href="https://sites.google.com/view/u-and-me-workshop/home?authuser=1" target="_blank" rel="noopener noreferrer">U & ME Workshop</a></li>
                 <li><a href="https://forms.gle/YsjEJj4UMXWCvQci6" target="_blank" rel="noopener noreferrer">Registration Link</a> (Registration is open)</li>
-                <li><a href="https://kaggle.com/competitions/gen-challenge-u-me-workshop-iccv-25" target="_blank" rel="noopener noreferrer">Challenge on Kaggle</a> (shall be activated soon)</li>
-                <li><a href="https://colab.research.google.com/drive/1_f6AIjZ5IYeJuVSl27upzSePpTd6-y3U?usp=sharing" target="_blank" rel="noopener noreferrer">Colab File Link</a> </li>
+                <li><a href="https://kaggle.com/competitions/gen-challenge-u-me-workshop-iccv-25" target="_blank" rel="noopener noreferrer">Challenge on Kaggle</a> (now active!)</li>
+                <li><a href="https://colab.research.google.com/drive/1_f6AIjZ5IYeJuVSl27upzSePpTd6-y3U?usp=sharing" target="_blank" rel="noopener noreferrer">Colab File for Evaluation</a> </li>
 
             </ul>
 
