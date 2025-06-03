@@ -191,13 +191,36 @@
 
             <p>Informally, unlearning refers to removing the influence of a subset of the training set from the weights of a trained model. The development of novel formal models, their theoretical limitations, and efficient and scalable algorithms is a rich and growing subfield; see for example recent State-of-the-Art works like Concept Ablation proposed by <a href="https://arxiv.org/abs/2303.13516" target="_blank" rel="noopener noreferrer">Kumari et.al (2023)</a>, ESD proposed by <a href="https://arxiv.org/pdf/2303.07345" target="_blank" rel="noopener noreferrer">Gandikota et.al (2023)</a> and FADE proposed by <a href="https://arxiv.org/abs/2503.19783" target="_blank" rel="noopener noreferrer">Thakral et al. (2025)</a>  </p>
 
-            <h2>Task and Data</h2>
-            <p>The challenge focuses on <strong>concept and adjacent concept unlearning in the image domain</strong>. Participants will work with pre-trained generative image models that need to "forget" specific visual concepts while retaining their general capabilities.</p>
-            <!-- <img src="genmu-diagram.png" alt="Anatomy of Generative Machine Unlearning Diagram" class="diagram-image"> -->
-            <p><strong>Anatomy of concept unlearning.</strong> An unlearning algorithm takes as input a pre-trained <a href="https://huggingface.co/CompVis/stable-diffusion-v1-4" target="_blank" rel="noopener noreferrer" > Stable Diffusion</a> and one or more visual concepts to unlearn (the "forget set"). From the model, forget concepts, and retain concepts, the unlearning algorithm produces an updated model. An ideal unlearning algorithm produces a model that cannot generate the forgotten concepts but maintains performance on adjacent and unrelated concepts.</p>
-            <p><strong>Adjacent concept challenge:</strong> Unlike simple unlearning tasks, this challenge emphasizes the difficulty of eliminating specific visual concepts without degrading performance on semantically related concepts. For example, removing the ability to generate "golden retrievers" without affecting the generation of other dog breeds.</p>
-           <p><strong>Dataset:</strong> A comprehensive CSV file containing prompts and corresponding target concepts designated for unlearning will be released. This dataset will serve as the foundational basis for the entire evaluation structure and metric calculations.</p>
+            <h2>Task&nbsp;and&nbsp;Data</h2>
 
+        <p>
+          The Genμ Challenge addresses <strong>concept unlearning in text-to-image generative models</strong>.
+          Starting from the public checkpoint
+          <a href="https://huggingface.co/CompVis/stable-diffusion-v1-4" target="_blank" rel="noopener noreferrer">
+            Stable Diffusion&nbsp;v1.4
+          </a>,
+          participants must make the model “forget” specific visual concepts while preserving its overall abilities.
+        </p>
+        
+        <!-- Optional diagram -->
+        <!-- <img src="genmu-diagram.png" alt="Concept-unlearning pipeline diagram" class="diagram-image"> -->
+        
+        <p><strong>Pipeline overview</strong></p>
+        <ul>
+          <li><em>Inputs:</em> Stable Diffusion v1.4 weights&nbsp;+ a list of target concepts to remove.</li>
+          <li><em>Output:</em> A revised model that cannot generate the target concepts but still performs well on all others.</li>
+        </ul>
+        
+        <p><strong>Evaluation axes</strong></p>
+        <ul>
+          <li><strong>Adjacent-Concept Preservation.</strong> Erasing “golden retriever” must not degrade generation of other dog breeds or related subjects.</li>
+          <li><strong>Robustness.</strong> The forgotten concepts must remain inaccessible even under engineered or adversarial prompts.</li>
+        </ul>
+
+        <p>
+          <strong>Dataset.</strong> A CSV with prompts and the concepts to be unlearned is provided.
+          It forms the basis for every leaderboard metric and automatic evaluation.
+        </p>
     <p>Participants are required to demonstrate their results using any one of the following three distinct unlearning strategies:</p>
     <ul>
         <li><strong>Single Concept Unlearning:</strong> Participants will submit unlearned models, each engineered to forget a single, specific concept.</li>
@@ -297,7 +320,7 @@
   <ul>
     <!-- 1. Registration -->
     <li>
-      <strong>Registration&nbsp;(21&nbsp;May – 31&nbsp;July&nbsp;2025)</strong><br>
+      <strong>Registration&nbsp;(21&nbsp;May – 1&nbsp;July&nbsp;2025)</strong><br>
       Complete the
       <a href="https://forms.gle/YsjEJj4UMXWCvQci6" target="_blank" rel="noopener noreferrer">
         official registration form
@@ -341,9 +364,9 @@
   </ul>
 </section>
 <!-- ====================================================================== -->
-    <p><strong>Call for Paper Phase:</strong> The top 3 performing teams in the challenge will receive an exclusive invitation to co-author a research paper(provided that their methodology beats the State-of-the-Art Baselines which will be shared with them soon) with our challenge and workshop organizing team, highlighting their innovative approaches and findings.</p>
+    <p><strong>Call for Paper Phase:</strong> The top performing teams in the challenge will receive an exclusive invitation to co-author a research paper (provided that their methodology beats the state-of-the-art baselines which will be shared with them soon) with our challenge and workshop organizing team, highlighting their innovative approaches and findings.</p>
     
-    <p>Winners will be officially announced tentatively on 10 August 2025.</p>
+    <p>Winners will be officially announced tentatively on 13 August 2025.</p>
     
 
 
