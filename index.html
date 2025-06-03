@@ -204,12 +204,13 @@
     </ul>
     <p>A comprehensive document outlining the detailed submission protocol for each type of unlearned model will be provided to all participants.</p>
 
-    <p><strong>Evaluation Methodology:</strong> Submissions will be evaluated based on their effectiveness in erasing target concepts while preserving both general and related knowledge with minimal impact on model weights. The Erasing-Retention-Robustness Score (ERR Score) will serve as the primary evaluation metric, balancing forgetting accuracy ($A_{er}$, the effectiveness of concept removal) with retention accuracy (the maintenance of related and unrelated knowledge, i.e., $A_{adj}$ and $A_{ret}$). Furthermore, robustness against engineered ($A_{ind}$) and adversarial ($A_{adv}$) prompts will be assessed to ensure that erased concepts do not reappear. Perceptual and distributional stability will also be analyzed to verify consistent model behavior post-unlearning. The final ERR Score can be mathemarcally expressed as:
-        Final metric: HM of \[\left(
-        \frac{1}{N_{img} N_{c}} \sum_{i=1}^{N_{img}} \sum_{c=1}^{N_{c}} A_{er}^{(i,c)},
-        \frac{1}{N_{img} N_{c}} \sum_{i=1}^{N_{img}} \sum_{c=1}^{N_{c}} A_{ret}^{(i,c)},
-        \frac{1}{N_{img} N_{c}} \sum_{i=1}^{N_{img}} \sum_{c=1}^{N_{c}} A_{adj}^{(i,c)},
-        \frac{1}{N_{img} N_{c}} \sum_{i=1}^{N_{img}} \sum_{c=1}^{N_{c}} A_{adv}^{(i,c)}
+    <p><strong>Evaluation Methodology:</strong> Submissions will be evaluated based on their effectiveness in erasing target concepts while preserving both general and related knowledge with minimal impact on model weights. The Forgetting-Retention-Robustness Score (FRR Score) will serve as the primary evaluation metric, balancing forgetting accuracy ($A_{er}$, the effectiveness of concept removal) with retention accuracy (the maintenance of related and unrelated knowledge, i.e., $A_{adj}$ and $A_{ret}$). Furthermore, robustness against engineered ($A_{ind}$) and adversarial ($A_{adv}$) prompts will be assessed to ensure that erased concepts do not reappear. Perceptual and distributional stability will also be analyzed to verify consistent model behavior post-unlearning. The final FRR Score can be mathematically expressed as:
+        Final metric: Harmonic Mean of \[\left(
+        \frac{1}{N_{img} N_{c_{tar}}} \sum_{i=1}^{N_{img}} \sum_{c=1}^{N_{c_{tar}}} A_{er}^{(i,c)},
+        \frac{1}{N_{img} N_{c_{ret}}} \sum_{i=1}^{N_{img}} \sum_{c=1}^{N_{c_{ret}}} A_{ret}^{(i,c)},
+        \frac{1}{N_{img} N_{c_{adj}}} \sum_{i=1}^{N_{img}} \sum_{c=1}^{N_{c_{adj}}} A_{adj}^{(i,c)},
+        \frac{1}{N_{img} N_{c_{tar}}} \sum_{i=1}^{N_{img}} \sum_{c=1}^{N_{c_{tar}}} A_{ind}^{(i,c)}
+        \frac{1}{N_{img} N_{c_{tar}}} \sum_{i=1}^{N_{img}} \sum_{c=1}^{N_{c_{tar}}} A_{adv}^{(i,c)}
       \right) \]
     Tie breaker:   \(    \left( \sum_{i} \left|\, \theta_{orig} - \theta_{un} \right| \right) / \text{Total parameters} \)
         For comparative purposes, baseline methods will be provided.</p>
@@ -232,8 +233,8 @@
 
     <p><strong>Evaluation Phase:</strong> This phase comprises two distinct stages to ensure thorough assessment:
         <ul>
-            <li><strong>Automatic Evaluation:</strong> Models are automatically evaluated via scripts executed within Kaggle notebooks, providing real-time leaderboard adjustments.</li>
-            <li><strong>Manual Evaluation:</strong> Our expert team will conduct rigorous, in-depth evaluations of submitted models on local servers, applying a diverse set of metrics to validate and analyze the results comprehensively.</li>
+            <li><strong>Self-Reporting Evaluation:</strong> Submissions will be evaluated using the CSV generated from this <a href="https://colab.research.google.com/drive/1_f6AIjZ5IYeJuVSl27upzSePpTd6-y3U?usp=sharing" target="_blank" rel="noopener noreferrer">Colab file</a>, and the leaderboard on Kaggle will be updated accordingly. During this phase, only the target concepts will be unlearned and tested using direct, engineered/indirect, and adversarial prompts.</li>
+            <li><strong>Model Evaluation:</strong> Our expert team will conduct rigorous evaluations of submitted models on local servers, applying a diverse set of metrics for comprehensive analysis. Evaluation on retention and adjacent concepts (considered a held-out set and released after the competition) will also be performed. In the event of a tie between two teams, the amount of weight modification required for unlearning will be compared, with less modification indicating better performance.</li>            
         </ul>
     </p>
 
@@ -244,7 +245,7 @@
 
 
             <h2>Announcements</h2>
-            <p>Announcements about the competition will be made on the challenge website.</p>
+            <p>Announcements about the competition are below:</p>
 
             <div class="post">
                 <div class="post-date">Updated on: May 21, 2025</div>
