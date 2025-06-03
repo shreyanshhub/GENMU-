@@ -208,12 +208,12 @@
         Final metric: Harmonic Mean of \[\left(
         \frac{1}{N_{img} N_{c_{tar}}} \sum_{i=1}^{N_{img}} \sum_{c=1}^{N_{c_{tar}}} A_{er}^{(i,c)},
         \frac{1}{N_{img} N_{c_{ret}}} \sum_{i=1}^{N_{img}} \sum_{c=1}^{N_{c_{ret}}} A_{ret}^{(i,c)},
-        \frac{1}{N_{img} N_{c_{adj}}} \sum_{i=1}^{N_{img}} \sum_{c=1}^{N_{c_{adj}}} A_{adj}^{(i,c)},
+        \frac{1}{N_{img} N_{c_{adj}}} \sum_{i=1}^{N_{img}} \sum_{c=1}^{N_{c_{adj}}} A_{adj}^{(i,c)}, <br>
         \frac{1}{N_{img} N_{c_{tar}}} \sum_{i=1}^{N_{img}} \sum_{c=1}^{N_{c_{tar}}} A_{ind}^{(i,c)}
         \frac{1}{N_{img} N_{c_{tar}}} \sum_{i=1}^{N_{img}} \sum_{c=1}^{N_{c_{tar}}} A_{adv}^{(i,c)}
       \right) \]
-    Tie breaker:   \(    \left( \sum_{i} \left|\, \theta_{orig} - \theta_{un} \right| \right) / \text{Total parameters} \)
-        For comparative purposes, baseline methods will be provided.</p>
+    Tie breaker:   \(    \left( \frac{1}{N_c}\sum_{i=1}^c \left|\, \theta_{orig}^i - \theta_{un}^i \right| \right) / \text{Total parameters} \), where $\theta_{orig}$ is the original model and \theta_{un} is the unlearnt model.
+        <br>For comparative purposes, baseline methods will be provided.</p>
             <!-- <p><strong>Update May 2025.</strong> TBD</p> -->
 
             <h2>Useful Links</h2>
