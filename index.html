@@ -233,13 +233,13 @@
 <ul>
   <li><strong>Goal</strong>: Remove the <em>target concepts</em> while preserving the model’s general and related knowledge, with minimal weight change.</li>
 
-  <li><strong>Primary Metric — Forgetting-Retention-Robustness (FRR&nbsp;Score)</strong>
+  <li><strong>Primary Metric — Erasing-Retention-Robustness (ERR&nbsp;Score)</strong>
     <ul>
       <li><strong>Per-concept averages</strong><br>
         \[
           \overline{A_{fgt}} = \frac{1}{N_{img}N_{c_{tar}}}\sum_{i=1}^{N_{img}}\sum_{c=1}^{N_{c_{tar}}} A_{fgt}^{(i,c)}
         \]
-        — average <em>forgetting accuracy</em>: how well the model suppresses each target concept.<br><br>
+        — average <em>Erasing accuracy</em>: how well the model suppresses each target concept.<br><br>
 
         \[
           \overline{A_{ret}} = \frac{1}{N_{img}N_{c_{ret}}}\sum_{i=1}^{N_{img}}\sum_{c=1}^{N_{c_{ret}}} A_{ret}^{(i,c)}
@@ -262,9 +262,9 @@
         — average <em>adversarial robustness</em>: resistance to adversarial prompts that attempt to reveal the targets.
       </li>
 
-      <li><strong>Final FRR&nbsp;Score</strong> (harmonic mean)<br>
+      <li><strong>Final ERR&nbsp;Score</strong> (harmonic mean)<br>
         \[
-          \text{FRR} \;=\;
+          \text{ERR} \;=\;
           \operatorname{HM}\bigl(
             \overline{A_{fgt}},\,
             \overline{A_{ret}},\,
@@ -276,7 +276,7 @@
       </li>
 
       <li><strong>Interpretation</strong>:  
-        Higher \(\overline{A_{fgt}}\) ⇒ better forgetting;  
+        Higher \(\overline{A_{fgt}}\) ⇒ better erasing;  
         higher \(\overline{A_{ret}}\) and \(\overline{A_{adj}}\) ⇒ better retention;  
         higher \(\overline{A_{ind}}\) and \(\overline{A_{adv}}\) ⇒ stronger robustness.
       </li>
