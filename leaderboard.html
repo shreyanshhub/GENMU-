@@ -15,15 +15,16 @@
             --accent: #e6f0ff;
             --winner: #dff7df;
             --winner-border: #5ec25e;
+            --banner-bg: #fff8e1;
+            --banner-border: #ffd54f;
         }
         *{box-sizing:border-box}
         body{
             margin:0;
-            font-family: 'Roboto', sans-serif;
+            font-family:'Roboto',sans-serif;
             color:var(--text);
             background-color:var(--bg);
             line-height:1.5;
-            -webkit-font-smoothing:antialiased;
         }
         .container{
             max-width:980px;
@@ -37,25 +38,10 @@
             gap:18px;
             margin-bottom:18px;
         }
-        .titles{
-            display:flex;
-            flex-direction:column;
-        }
-        .challenge-heading{
-            font-size:22px;
-            font-weight:600;
-            color:var(--text);
-        }
-        .sub{
-            color:var(--muted);
-            font-size:0.95rem;
-        }
-        nav a{
-            color:var(--text);
-            text-decoration:none;
-            margin-left:14px;
-            font-weight:500;
-        }
+        .titles{display:flex;flex-direction:column}
+        .challenge-heading{font-size:22px;font-weight:600;color:var(--text)}
+        .sub{color:var(--muted);font-size:0.95rem}
+        nav a{color:var(--text);text-decoration:none;margin-left:14px;font-weight:500}
         .card{
             background:var(--card);
             border-radius:10px;
@@ -63,27 +49,25 @@
             box-shadow:0 1px 4px rgba(18,18,18,0.04);
             margin-bottom:18px;
         }
-        .teams{
-            display:flex;
-            gap:20px;
-            flex-wrap:wrap;
+        .banner{
+            background:var(--banner-bg);
+            border:1px solid var(--banner-border);
+            border-radius:8px;
+            padding:12px 16px;
+            margin-bottom:18px;
+            font-weight:500;
+            color:#9c6b00;
         }
+        .teams{display:flex;gap:20px;flex-wrap:wrap}
         .team{
             flex:1 1 320px;
             padding:12px;
             border-radius:8px;
-            background:linear-gradient(180deg,#fff, #fbfdff);
+            background:linear-gradient(180deg,#fff,#fbfdff);
             border:1px solid #eee;
         }
-        .team h3{
-            margin:0 0 6px 0;
-            font-size:1.05rem;
-        }
-        .team .meta{
-            color:var(--muted);
-            font-size:0.95rem;
-            margin-bottom:10px;
-        }
+        .team h3{margin:0 0 6px 0;font-size:1.05rem}
+        .team .meta{color:var(--muted);font-size:0.95rem;margin-bottom:10px}
         .winner-badge{
             display:inline-block;
             background:var(--winner);
@@ -94,7 +78,6 @@
             font-weight:700;
             font-size:0.95rem;
         }
-
         table{
             width:100%;
             border-collapse:collapse;
@@ -113,8 +96,8 @@
             border-bottom:1px solid #f0f0f0;
         }
         tbody tr:hover td{background:#fcfeff}
-        .numeric{ text-align:right; font-family:monospace }
-        .highlight { background: linear-gradient(90deg,#fffbe8,#fff); }
+        .numeric{text-align:right;font-family:monospace}
+        .highlight{background:linear-gradient(90deg,#fffbe8,#fff)}
         .footer{
             margin-top:22px;
             border-top:1px solid #eee;
@@ -123,10 +106,10 @@
             font-size:0.95rem;
         }
         @media (max-width:720px){
-            header{flex-direction:column; align-items:flex-start}
+            header{flex-direction:column;align-items:flex-start}
             .teams{flex-direction:column}
             .team{flex:1 1 auto}
-            thead th, tbody td{font-size:0.92rem}
+            thead th,tbody td{font-size:0.92rem}
         }
     </style>
 </head>
@@ -147,21 +130,27 @@
             </nav>
         </header>
 
+        <!-- Status banner -->
+        <div class="banner">
+            🏁 <strong>Current Status:</strong> Team 1 is currently <strong>leading</strong> the leaderboard!  
+            We are still <strong>accepting responses</strong> — stay tuned for the final results.
+        </div>
+
         <section class="card">
             <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
                 <div>
-                    <h2 style="margin:0 0 6px 0">Final Results — Summary</h2>
-                    <div style="color:var(--muted)">Below are the tabulated per-concept scores and the overall averages. Winner: <span class="winner-badge">Team 1</span></div>
+                    <h2 style="margin:0 0 6px 0">Current Results — Summary</h2>
+                    <div style="color:var(--muted)">Below are the tabulated per-concept scores. Team 1 is currently leading based on average ERB.</div>
                 </div>
                 <div style="text-align:right">
-                    <div style="font-weight:700">Winner</div>
-                    <div style="color:var(--muted)">Team 1 (by average ERB)</div>
+                    <div style="font-weight:700">Leading Team</div>
+                    <div style="color:var(--muted)">Team 1 (so far)</div>
                 </div>
             </div>
 
             <div style="margin-top:14px" class="teams">
                 <div class="team" aria-labelledby="team1-title">
-                    <h3 id="team1-title">Team 1 — (WON)</h3>
+                    <h3 id="team1-title">Team 1 — <span class="winner-badge">Currently Leading</span></h3>
                     <div class="meta">Participants & emails</div>
                     <ul style="margin:6px 0 0 18px;padding:0;color:var(--text)">
                         <li>Om Prakash Chaodhary — <a href="mailto:omprakashc@iisc.ac.in">omprakashc@iisc.ac.in</a></li>
@@ -184,7 +173,7 @@
 
         <section class="card" aria-labelledby="results-title">
             <h3 id="results-title" style="margin-top:0">Per-concept scores</h3>
-            <div style="color:var(--muted);margin-bottom:8px">Columns: Concept | Type | Team 1 ERB | Team 2 ERB | Team 2 L-2 NORM (col A) | Team 2 L-2 NORM (col B)</div>
+            <div style="color:var(--muted);margin-bottom:8px">Columns: Concept | Type | Team 1 ERB | Team 2 ERB | Team 2 L-2 NORM (A) | Team 2 L-2 NORM (B)</div>
 
             <div style="overflow-x:auto">
                 <table role="table" aria-label="Per-concept leaderboard table">
@@ -219,10 +208,8 @@
                         <tr><td>Eating</td><td>Action</td><td class="numeric">0.478</td><td class="numeric">0.488</td><td class="numeric">0.421</td><td class="numeric">0.487</td></tr>
                         <tr><td>Dancing</td><td>Action</td><td class="numeric">0.464</td><td class="numeric">0.425</td><td class="numeric">0.551</td><td class="numeric">0.629</td></tr>
                         <tr><td>Jumping</td><td>Action</td><td class="numeric">0.511</td><td class="numeric">0.452</td><td class="numeric">0.516</td><td class="numeric">0.513</td></tr>
-
                         <tr class="highlight" style="font-weight:700">
-                            <td>Average</td>
-                            <td></td>
+                            <td>Average</td><td></td>
                             <td class="numeric">0.4959</td>
                             <td class="numeric">0.4460</td>
                             <td class="numeric">0.47585</td>
@@ -234,15 +221,16 @@
         </section>
 
         <div class="footer card" style="margin-bottom:40px">
-            <p style="margin:6px 0"><strong>Summary</strong></p>
-            <p style="margin:6px 0;color:var(--muted)">Team 1 achieved a higher average ERB (0.4959) compared to Team 2 (0.4460) — hence Team 1 is declared the winner.</p>
-            
+            <p><strong>Status Update:</strong> Team 1 is currently <strong>leading</strong> with an average ERB of 0.4959.  
+            Submissions are still open — updated results will be reflected here as new entries arrive.</p>
+
             <p style="margin-top:10px"><strong>Contact</strong><br/>
                 Mail to: <a href="mailto:genmu.challenge.2025@gmail.com">genmu.challenge.2025@gmail.com</a><br/>
-                Workshop site: <a href="https://sites.google.com/view/u-and-me-workshop/home?authuser=1" target="_blank" rel="noopener noreferrer">U &amp; ME Workshop</a>
+                Workshop site: <a href="https://sites.google.com/view/u-and-me-workshop/home?authuser=1" target="_blank" rel="noopener noreferrer">U & ME Workshop</a>
             </p>
         </div>
     </div>
 </body>
 </html>
+
 
